@@ -1,0 +1,26 @@
+<div class="container">
+  <h1>Créer un nouveau potin</h1>
+
+  <% if @gossip.errors.any? %>
+    <div class="alert alert-danger">
+      <p>Le potin est invalide :</p>
+      <ul>
+        <% @gossip.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <%= form_tag gossips_path, method: :post do %>
+    <div class="form-group">
+      <label>Titre (3 à 14 caractères)</label>
+      <%= text_field_tag "title", @gossip.title, class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <label>Contenu du potin</label>
+      <%= text_area_tag "content", @gossip.content, class: "form-control" %>
+    </div>
+    <button type="submit" class="btn btn-primary">Enregistrer le potin</button>
+  <% end %>
+</div>

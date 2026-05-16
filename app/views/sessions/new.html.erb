@@ -1,0 +1,23 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-6 offset-md-3">
+      <h1>Se connecter</h1>
+      <%= form_tag sessions_path, method: :post do %>
+        <div class="form-group">
+          <label>Email</label>
+          <%= text_field_tag 'email', nil, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <label>Mot de passe</label>
+          <%= password_field_tag 'password', nil, class: 'form-control' %>
+        </div>
+        <!-- Le champ "remember_me" est un checkbox qui permet à l'utilisateur de rester connecté même après la fermeture du navigateur. En cochant cette case, une session persistante sera créée pour l'utilisateur. -->
+        <div class="form-check mb-3">
+          <%= check_box_tag :remember_me, '1', true, class: 'form-check-input' %>
+          <label class="form-check-label">Se souvenir de moi</label>
+        </div>
+        <button type="submit" class="btn btn-primary mt-3">Connexion</button>
+      <% end %>
+    </div>
+  </div>
+</div>

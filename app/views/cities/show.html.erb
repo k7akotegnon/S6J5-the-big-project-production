@@ -1,0 +1,24 @@
+<div class="jumbotron text-center">
+  <h1 class="display-4">Ville : <%= @city.name %></h1>
+  <p class="lead">Découvrez tous les potins postés par les habitants de cette ville.</p>
+</div>
+
+<div class="row">
+  <% @city.users.each do |user| %>
+    <% user.gossips.each do |gossip| %>
+      <div class="col-md-4 mb-3">
+        <div class="card h-100 border-info">
+          <div class="card-body">
+            <h5 class="card-title"><%= gossip.title %></h5>
+            <p class="card-text text-muted small">Par <%= user.first_name %></p>
+            <%= link_to "Voir le potin", gossip_path(gossip.id), class: "btn btn-info btn-sm" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="text-center mt-5">
+  <%= link_to "Retour à l'accueil", root_path, class: "btn btn-secondary" %>
+</div>

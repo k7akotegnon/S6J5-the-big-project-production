@@ -1,0 +1,14 @@
+<div class="row">
+  <% @gossips.each do |gossip| %> <!-- Parcours de tous les potins et affichage de leurs titres et auteurs -->
+    <div class="col-md-4 mb-4">
+      <div class="card h-100">
+        <div class="card-body">
+          <h5 class="card-title"><%= gossip.title %></h5>
+          <p class="card-text">Auteur : <strong><%= gossip.user.first_name %></strong></p>
+          <!-- Lien dynamique vers la page show du potin -->
+          <%= link_to "Voir le potin", gossip_path(gossip.id), class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
