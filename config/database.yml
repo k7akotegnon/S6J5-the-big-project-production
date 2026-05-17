@@ -87,18 +87,18 @@ test:
 production:
   primary: &primary_production
     <<: *default
-    database: the_big_project_production
-    username: the_big_project
-    password: <%= ENV["THE_BIG_PROJECT_DATABASE_PASSWORD"] %>
+    # C'EST CETTE LIGNE QUI RÉSOUD L'ERREUR DE SOCKET
+    # Elle remplace database, username et password en une seule URL réseau
+    url: <%= ENV['DATABASE_URL'] %>
   cache:
     <<: *primary_production
-    database: the_big_project_production_cache
+    url: <%= ENV['DATABASE_URL'] %>
     migrations_paths: db/cache_migrate
   queue:
     <<: *primary_production
-    database: the_big_project_production_queue
+    url: <%= ENV['DATABASE_URL'] %>
     migrations_paths: db/queue_migrate
   cable:
     <<: *primary_production
-    database: the_big_project_production_cable
+    url: <%= ENV['DATABASE_URL'] %>
     migrations_paths: db/cable_migrate
