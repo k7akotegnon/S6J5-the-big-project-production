@@ -91,5 +91,6 @@ Rails.application.configure do
   
   config.hosts << ".railway.app"
   config.hosts << ".onrender.com"
+  config.hosts << ".koyeb.app"
 
 end
